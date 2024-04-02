@@ -13,30 +13,28 @@ hay mejores opciones que no trabajan con código mutable pero no nos sirven para
 ```
 
 ## Requisitos
-Para poder llevar a cabo este taller necesitarás poder ejecutar Gradle en tu ordenador, tienes dos formas de hacerlo:
+Para poder llevar a cabo este taller necesitarás
+* Hacer un fork de este repositorio para poder modificar el código que necesites
+* Necesitarás editar código en Kotlin, puedes usar el IDE que prefieras pero los ejemplos los veremos con
+  [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/download/) hay una versión gratuita Community y también hay un periodo
+  de prueba en la versión Ultimate
+* Ejecutar Gradle en tu ordenador, tienes varias formas de hacerlo:
 
-  1. Teniendo instalado jdk 17 en tu ordenador y ejecutando el siguiente comando, desde la raíz de este proyecto
+1. Teniendo instalado jdk 17 en tu ordenador y ejecutando el siguiente comando, desde la raíz de este proyecto
+   ```shell
+   ./gradlew <nombre-tarea-gradle>
+   ```
+   Todo está preparado si, al finalizar la ejecución, ves en la consola un mensaje que dice `BUILD SUCCESSFUL` normalmente en color verde, pero esto no siempre es así.
 
-```shell
-./gradlew <nombre-tarea-gradle>
-```
-  2. Ejecutando gradle desde docker con el comando:
+2. Ejecutando gradle desde docker con el comando:
+   ```shell
+   docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle gradle <nombre-tarea-gradle>
+   ```
+   Todo está preparado si, al finalizar la ejecución, en la consola ves un mensaje que dice `BUILD SUCCESSFUL`.
 
-```shell
-docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle gradle <nombre-tarea-gradle>
-```
-También podéis ejecutarlo desde IntelliJ ![test_execution_intellij.png](test_execution_intellij.png)
+3. También podéis ejecutarlo desde IntelliJ ![test_execution_intellij.png](test_execution_intellij.png)
+Todo está preparado si, al finalizar la ejecución, ves un mensaje que dice `BUILD SUCCESSFUL` en la consola que ha abierto IntelliJ.
 
-También necesitarás editar código en Kotlin, puedes usar el IDE que prefieras pero los ejemplos los veremos con 
-[IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/download/) hay una versión gratuita Community y también hay un periodo
-de prueba en la versión Ultimate
-
-## Antes de empezar - Crea un fork de este repositorio
-
-Para poder llevar a cabo el taller necesitarás hacer un fork de este repositorio, de esa manera podrás llevar a 
-cabo los cambios que se piden sin problema.
-
-Abre el repositorio con el IDE que quieras.
 
 ## Primer paso - Ejecutar los test
 
