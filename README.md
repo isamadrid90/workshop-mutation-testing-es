@@ -13,22 +13,31 @@ ni mejor de esta Kata en Kotlin, hay mejores opciones que no trabajan con códig
 ## Requisitos
 Para poder llevar a cabo este taller necesitarás poder ejecutar Gradle en tu ordenador, tienes dos formas de hacerlo:
 
-    1. Teniendo instalado jdk 17 en tu ordenador y ejecutando el siguiente comando, desde la raíz de este proyecto
+  1. Teniendo instalado jdk 17 en tu ordenador y ejecutando el siguiente comando, desde la raíz de este proyecto
+
 ```shell
 ./gradlew <nombre-tarea-gradle>
 ```
-    2. Ejecutando gradle desde docker con el comando:
+  2. Ejecutando gradle desde docker con el comando:
+
 ```shell
 docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle gradle <nombre-tarea-gradle>
 ```
-También podéis ejecutarlo desde IntelliJ (quizá indicar cómo se hace desde Community Edition)
+También podéis ejecutarlo desde IntelliJ ![test_execution_intellij.png](test_execution_intellij.png)
+
+También necesitarás editar código en Kotlin, puedes usar el IDE que prefieras pero los ejemplos los veremos con 
+[IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/download/) hay una versión gratuita Community y también hay un periodo
+de prueba en la versión Ultimate
 
 ## Antes de empezar - Crea un fork de este repositorio
 
 Para poder llevar a cabo el taller necesitarás hacer un fork de este repositorio, de esa manera podrás llevar a 
 cabo los cambios que se piden sin problema.
 
+Abre el repositorio con el IDE que quieras.
+
 ## Primer paso - Ejecutar los test
+
 Lo primero que haremos será asegurarnos de que nuestros tests se ejecutan correctamente:
 ```shell
 ./gradlew test
@@ -119,7 +128,7 @@ docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project
 
 Una vez finalizada la ejecución con éxito podréis acceder a los informes en la ruta: `build/reports/pitest`.
 Encontraréis un archivo `index.html`, si lo abrís con un navegador veréis algo como esto
-![img.png](img.png)
+![pit_report.png](pit_report.png)
 
 ## Cuarto paso - Mejorar la fiabilidad de nuestros test
 
@@ -127,14 +136,14 @@ Ahora que ya sabemos cómo obtener un informe de Mutation Testing, vamos a utili
 ✏️ Necesitarás añadir nuevos tests o identificar cuales de los existentes cubren los siguientes mutantes:
 
 * En la clase Main:
-  1. Cambiar límite condicional linea 7 (enlace docu)
-  2. Negar condicional linea 7 (enlace docu)
-  3. Eliminar llamada linea 11 (enlace docu)
+  1. Cambiar límite condicional linea 7 ([Conditional Boundary](https://pitest.org/quickstart/mutators/#CONDITIONALS_BOUNDARY))
+  2. Negar condicional linea 7 ([Negate Conditional](https://pitest.org/quickstart/mutators/#NEGATE_CONDITIONALS))
+  3. Eliminar llamada linea 11 ([Void method calls](https://pitest.org/quickstart/mutators/#VOID_METHOD_CALLS))
   
 * En la clase FizzBuzzTranslator:
-  1. Devolver lista vacía en la linea 17 (enlace)
-  2. Devolver string vacío en la linea 24 (enlace)
-  3. Devolver true en la linea 28 (enlace)
+  1. Devolver lista vacía en la linea 17 ([Empty returns](https://pitest.org/quickstart/mutators/#EMPTY_RETURNS))
+  2. Devolver string vacío en la linea 24 ([Empty returns](https://pitest.org/quickstart/mutators/#EMPTY_RETURNS))
+  3. Devolver true en la linea 28 ([True returns](https://pitest.org/quickstart/mutators/#TRUE_RETURNS))
 
 ## Quinto paso - Añadir Mutation Testing a GitHub Actions
 
@@ -144,12 +153,15 @@ Para eso modificaremos el archivo en `.github/workflows/pull-request.yml` y aña
 Este nuevo job será prácticamente igual que el de `build`, excepto el paso `Build with Gradle`, nosotros tendremos que 
 ejecutar el siguiente comando en lugar del build `./gradlew pitest`
 
-Con esto estaríamos ejecutando PITest cada vez que crease o se hiciera push a una pull request (tada)
+Con esto estaríamos ejecutando PITest cada vez que crease o se hiciera push a una pull request 🎉
+
+## Extra
 
 El problema es que es imposible acceder al report que hemos visto antes ¿qué podemos hacer al respecto?
 
 Teniendo en cuenta que para que la información se use tiene que ser muy fácil acceder a ella desarrollé [Gradle Pitest with summary comment](https://github.com/marketplace/actions/gradle-pitest-with-summary-comment)
-Es fácil de usar, solo tendríamos que sustituir el último paso, el que habíamos modificado, por el siguiente cógido
+Es fácil de usar, solo tendríamos que sustituir el último paso, el que habíamos añadido, por el siguiente cógido
+
 ```yaml
     - name: Execute PITest
       uses: isamadrid90/gradle-pitest-comment-action@v1
