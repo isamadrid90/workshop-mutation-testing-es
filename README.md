@@ -6,8 +6,10 @@ Nos valdremos de la famosa kata FizzBuzz para entender cómo funciona
 Tendréis algunas preguntas marcadas con ✏️ anota la respuesta cuando llegues a ellas.
 
 ```
-DISCLAIMER: El objetivo de este ejemplo es permitirnos prácticar Mutation Testing, por esa razón esta no es la implementación más optima
-ni mejor de esta Kata en Kotlin, hay mejores opciones que no trabajan con código mutable pero no nos sirven para ilustrar lo que buscamos.
+DISCLAIMER: El objetivo de este ejemplo es permitirnos prácticar Mutation Testing,
+por esa razón esta no es la implementación más optima
+ni mejor de esta Kata en Kotlin, 
+hay mejores opciones que no trabajan con código mutable pero no nos sirven para ilustrar lo que buscamos.
 ```
 
 ## Requisitos
