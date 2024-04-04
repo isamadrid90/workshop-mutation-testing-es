@@ -128,12 +128,13 @@ docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project
 
 Una vez finalizada la ejecución con éxito podréis acceder a los informes en la ruta: `build/reports/pitest`.
 Encontraréis un archivo `index.html`, si lo abrís con un navegador veréis algo como esto
+
 ![pit_report.png](pit_report.png)
 
 ## Cuarto paso - Mejorar la fiabilidad de nuestros test
 
 Ahora que ya sabemos cómo obtener un informe de Mutation Testing, vamos a utilizarlo para mejorar la fiabilidad de nuestros test.
-✏️ Necesitarás añadir nuevos tests o identificar cuales de los existentes cubren los siguientes mutantes:
+✏️ Necesitarás añadir nuevos tests o identificar cuáles de los existentes cubren los siguientes mutantes:
 
 * En la clase Main:
   1. Cambiar límite condicional linea 7 ([Conditional Boundary](https://pitest.org/quickstart/mutators/#CONDITIONALS_BOUNDARY))
@@ -164,7 +165,7 @@ Es fácil de usar, solo tendríamos que sustituir el último paso, el que había
 
 ```yaml
     - name: Execute PITest
-      uses: isamadrid90/gradle-pitest-comment-action@v1
+      uses: isamadrid90/gradle-pitest-comment-action@v2.0.0
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 ```
