@@ -61,6 +61,6 @@ tasks.check {
 pitest {
     junit5PluginVersion = "1.2.1"
     testPlugin = "junit5"
-    targetClasses= listOf("com.isamadrid90.*")
+    targetClasses = listOf("com.isamadrid90.*")
     outputFormats = listOf("HTML")
 }
