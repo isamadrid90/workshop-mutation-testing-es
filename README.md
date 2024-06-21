@@ -136,15 +136,16 @@ Encontraréis un archivo `index.html`, si lo abrís con un navegador veréis alg
 Ahora que ya sabemos cómo obtener un informe de Mutation Testing, vamos a utilizarlo para mejorar la fiabilidad de nuestros test.
 ✏️ Necesitarás añadir nuevos tests o identificar cuáles de los existentes cubren los siguientes mutantes:
 
+* En la clase FizzBuzzTranslator:
+  1. Devolver lista vacía en la linea 17 ([Empty returns](https://pitest.org/quickstart/mutators/#EMPTY_RETURNS))
+  2. Devolver string vacío en la linea 24 ([Empty returns](https://pitest.org/quickstart/mutators/#EMPTY_RETURNS))
+  3. Devolver true en la linea 28 ([True returns](https://pitest.org/quickstart/mutators/#TRUE_RETURNS))
+
 * En la clase Main:
   1. Cambiar límite condicional linea 7 ([Conditional Boundary](https://pitest.org/quickstart/mutators/#CONDITIONALS_BOUNDARY))
   2. Negar condicional linea 7 ([Negate Conditional](https://pitest.org/quickstart/mutators/#NEGATE_CONDITIONALS))
   3. Eliminar llamada linea 11 ([Void method calls](https://pitest.org/quickstart/mutators/#VOID_METHOD_CALLS))
   
-* En la clase FizzBuzzTranslator:
-  1. Devolver lista vacía en la linea 17 ([Empty returns](https://pitest.org/quickstart/mutators/#EMPTY_RETURNS))
-  2. Devolver string vacío en la linea 24 ([Empty returns](https://pitest.org/quickstart/mutators/#EMPTY_RETURNS))
-  3. Devolver true en la linea 28 ([True returns](https://pitest.org/quickstart/mutators/#TRUE_RETURNS))
 
 ## Quinto paso - Añadir Mutation Testing a GitHub Actions
 
