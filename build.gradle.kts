@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "1.9.20"
     id("com.diffplug.spotless") version "6.25.0"
     application
+    id("info.solidsoft.pitest") version "1.15.0"
 }
 
 group = "com.isamadrid"
@@ -55,4 +56,9 @@ spotless {
 
 tasks.check {
     dependsOn(tasks.spotlessCheck)
+}
+pitest {
+    junit5PluginVersion = "1.2.1"
+    targetClasses = listOf("com.isamadrid90.*")
+    outputFormats = listOf("HTML")
 }
